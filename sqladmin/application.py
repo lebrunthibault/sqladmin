@@ -45,7 +45,7 @@ class BaseAdmin:
         self.templates = Jinja2Templates("templates")
         self.templates.env.loader = ChoiceLoader(
             [
-                FileSystemLoader("templates"),
+                FileSystemLoader("src/backoffice/templates"),
                 PackageLoader("sqladmin", "templates"),
             ]
         )
@@ -238,7 +238,6 @@ class Admin(BaseAdminView):
 
     async def index(self, request: Request) -> Response:
         """Index route which can be overriden to create dashboards."""
-
         return self.templates.TemplateResponse("index.html", {"request": request})
 
     async def list(self, request: Request) -> Response:

@@ -589,6 +589,10 @@ class ModelAdmin(BaseModelAdmin, metaclass=ModelAdminMeta):
 
     def _url_for_details_with_attr(self, obj: Any, attr: RelationshipProperty) -> str:
         target = getattr(obj, attr.key)
+
+        if target is None:
+            return "#"
+
         pk = getattr(target, attr.mapper.primary_key[0].name)
         return self.url_path_for(
             "admin:details",

@@ -22,7 +22,7 @@
               {% if is_list( model_admin.get_list_value(model, attr) ) %}
               <td>
               {% for value in model_admin.get_detail_value(model, attr) %}
-              <a href="{{ model_admin._url_for_details(value) }}">({{ value }})</a>
+              <a href="{{ model_admin._url_for_details(value) }}">{{ value }}</a><br>
               {% endfor %}
               </td>
               {% else %}
